@@ -8,7 +8,4 @@ import { Component } from "@angular/core";
 
 export class WrapperComponent {
   title = 'wrapper';
-  public sayHello = () => {
-    console.log('Hello!')
-  };
 }

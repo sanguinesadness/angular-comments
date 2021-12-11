@@ -1,3 +1,97 @@
-.wrapper {
-    padding: 20px;
+#app {
+  padding: 30px 20vw;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .table {
+    table-layout: fixed;
+    word-wrap: break-word;
+    position: relative;
+
+    thead th {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: inline;
+        padding-left: 8px;
+        color: rgb(68, 68, 68);
+        text-shadow: 1px 1px 1px rgba(#000, 0.1);
+      }
+
+      &.asc,
+      &.desc {
+        text-align: left !important;
+      }
+
+      &.asc::after {
+        content: "▲";
+      }
+
+      &.desc::after {
+        content: "▼";
+      }
+
+      &.none::after {
+        content: "";
+      }
+    }
+
+    tr {
+      position: relative;
+
+      .remove-button {
+        right: -100px;
+        position: absolute;
+        height: 100%;
+        padding-left: 50px;
+        display: flex;
+        align-items: center;
+
+        button {
+          transition: 200ms ease all;
+          visibility: hidden;
+          transform: scale(0);
+          opacity: 0.5;
+        }
+
+        &:hover button {
+          visibility: visible;
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      &:hover {
+        .remove-button button {
+          visibility: visible;
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    }
+
+    .id {
+      text-align: center;
+      width: 6%;
+    }
+
+    .name,
+    .email {
+      width: 30%;
+    }
+
+    .message {
+      width: 44%;
+    }
+
+    .alert {
+      position: absolute;
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
 }

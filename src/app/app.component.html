@@ -1,6 +1,101 @@
-<div class="wrapper">
-  <main-wrapper></main-wrapper>
-  <pre>{{ model | json }}</pre>
+<div id="app">
+  <h1>Comments</h1>
+  <form>
+    <div class="form-group form-inline">
+      Search:
+      <input
+        class="form-control ml-2"
+        type="text"
+        name="search"
+        [ngModel]="searchValue"
+        (ngModelChange)="onSearchChange($event)"
+      />
+    </div>
+  </form>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th
+          class="id"
+          role="button"
+          scope="col"
+          (click)="filterBy('id')"
+          [class]="getFilterType('id')"
+        >
+          #
+        </th>
+        <th
+          class="name"
+          role="button"
+          scope="col"
+          (click)="filterBy('name')"
+          [class]="getFilterType('name')"
+        >
+          Name
+        </th>
+        <th
+          class="email"
+          role="button"
+          scope="col"
+          (click)="filterBy('email')"
+          [class]="getFilterType('email')"
+        >
+          Email
+        </th>
+        <th
+          class="message"
+          role="button"
+          scope="col"
+          (click)="filterBy('body')"
+          [class]="getFilterType('body')"
+        >
+          Message
+        </th>
+      </tr>
+    </thead>
+    <div
+      class="alert alert-danger"
+      [class.hidden]="!isResultEmpty()"
+      role="alert"
+    >
+      Не найдено
+    </div>
+    <tbody>
+      <tr *ngFor="let comment of comments">
+        <th scope="row" class="id">{{ comment.id }}</th>
+        <td>
+          <ngb-highlight
+            class="name"
+            [result]="comment.name"
+            [term]="searchValue"
+          ></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight
+            class="email"
+            [result]="comment.email"
+            [term]="searchValue"
+          ></ngb-highlight>
+        </td>
+        <td>
+          <ngb-highlight
+            class="message"
+            [result]="comment.body"
+            [term]="searchValue"
+          ></ngb-highlight>
+        </td>
+        <div class="remove-button">
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="removeComment(comment.id)"
+          >
+            Remove
+          </button>
+        </div>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <router-outlet></router-outlet>
