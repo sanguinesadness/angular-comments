@@ -62,8 +62,7 @@ export class AppComponent implements OnInit {
       return res ? num1 : num2;
     });
 
-    // РУС: если список не изменился, то фильтруем заново с противоположным условием
-    // ENG: if list hasn't changed, fitler again with the opposite condition
+    // if list hasn't changed, fitler again with the opposite condition
     if (firstId === this.comments[0].id) {
       this.filterBy(field, true);
     }
