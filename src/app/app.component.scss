@@ -1,8 +1,11 @@
 #app {
   padding: 30px 20vw;
 
-  h1 {
-    margin-bottom: 20px;
+  .table-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .table {

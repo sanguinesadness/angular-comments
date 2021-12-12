@@ -1,0 +1,24 @@
+<div class="img-grid">
+  <div class="title">
+    <fa-icon class="icon" [icon]="imgIcon"></fa-icon>
+    <h1>Image Grid</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let photo of photos">
+        <div class="img-card">
+          <a href="{{ photo.url }}" target="_blank" rel="noopener noreferrer">
+            <img src="{{ photo.download_url }}" alt="" />
+          </a>
+          <div class="info">
+            <span class="author-label">
+              <fa-icon class="icon" [icon]="authorIcon"></fa-icon>
+              <span>Author</span>
+            </span>
+            <span class="author-name">{{ photo.author }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,17 +1,23 @@
-<div id="app">
+<img-grid></img-grid>
+<!-- <div id="app">
   <h1>Comments</h1>
-  <form>
-    <div class="form-group form-inline">
-      Search:
-      <input
-        class="form-control ml-2"
-        type="text"
-        name="search"
-        [ngModel]="searchValue"
-        (ngModelChange)="onSearchChange($event)"
-      />
+  <div class="table-header">
+    <form>
+      <div class="form-group form-inline">
+        Search:
+        <input
+          class="form-control ml-2"
+          type="text"
+          name="search"
+          [ngModel]="searchValue"
+          (ngModelChange)="onSearchChange($event)"
+        />
+      </div>
+    </form>
+    <div>
+      <h5>{{ comments.length }} элементов</h5>
     </div>
-  </form>
+  </div>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -96,6 +102,6 @@
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->
 
 <router-outlet></router-outlet>

@@ -12,9 +12,11 @@ export class AppComponent implements OnInit {
   private _comments: Comment[] = [];
   public comments: Comment[] = [];
   public searchValue: string = '';
+  public title = 'Comments';
 
   constructor(private http: HttpClient) {}
 
+  // fetch Comments on init
   ngOnInit(): void {
     const start = 0;
     const limit = 100;
@@ -29,13 +31,16 @@ export class AppComponent implements OnInit {
       });
   }
 
+  // no Comments were found after search?
   isResultEmpty = () => this.searchValue && !this.comments.length;
 
+  // on input value change
   onSearchChange = (value: string) => {
     this.searchValue = value;
     this.search(value);
   };
 
+  // filter Comments by name, email and body (message)
   search = (search: string) => {
     const searchLower = search.toLowerCase();
 
@@ -49,10 +54,12 @@ export class AppComponent implements OnInit {
     this.comments = filteredComments;
   };
 
+  // on Remove button click
   removeComment = (commentId: number) => {
     this.comments = this.comments.filter((comment) => comment.id !== commentId);
   };
 
+  // filters specific column in table by simple comparison
   filterBy = (field: keyof Comment, reversed?: boolean) => {
     const firstId = this.comments[0].id;
 
@@ -68,6 +75,7 @@ export class AppComponent implements OnInit {
     }
   };
 
+  // checks if all column values are sorted and returns type of sorting
   getFilterType = (field: keyof Comment): FilterType => {
     if (this.comments.length <= 1) {
       return FilterTypes.NONE;
